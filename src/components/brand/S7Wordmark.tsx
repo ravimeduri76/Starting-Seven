@@ -1,4 +1,4 @@
-import S7Mark from './S7Mark';
+import { S7Mark } from './S7Mark';
 
 interface S7WordmarkProps {
   size?: 'sm' | 'md' | 'lg';

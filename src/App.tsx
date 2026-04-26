@@ -5,7 +5,7 @@ import { RoundOverMoment } from './components/screens/RoundOverMoment';
 import { RoundResults } from './components/screens/RoundResults';
 import { MatchResults } from './components/screens/MatchResults';
 import { PassDevice } from './components/screens/PassDevice';
-import { isMatchOver as checkMatchOver, computeStandings } from './hooks/useMatch';
+import { isMatchOver as checkMatchOver } from './hooks/useMatch';
 
 function App() {
   const match = useMatch();

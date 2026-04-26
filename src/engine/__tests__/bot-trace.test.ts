@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
-import { createGame, legalActions, applyAction, isRoundOver, score } from '../engine';
-import type { GameState, PlayerSetup, TurnLogEntry } from '../types';
+import { createGame, applyAction, isRoundOver, score } from '../engine';
+import type { GameState, PlayerSetup } from '../types';
 import { DEFAULT_SETTINGS } from '../types';
 import { chooseAction } from '../../bots/bot';
 

@@ -149,8 +149,6 @@ function hardBot(
 
   if (playCards.length === 0) return actions[0]; // forced pass
 
-  const player = state.players.find(p => p.id === playerId)!;
-
   // Card counting: build a picture of what's been played and what remains
   const played = buildPlayedSet(state);
   const velocities = computeChainVelocities(state, playerId, played);
@@ -206,7 +204,7 @@ function buildPlayedSet(state: GameState): Set<string> {
 /** Estimate chain velocity: probability that each chain extends in the next round. */
 function computeChainVelocities(
   state: GameState,
-  botId: string,
+  _botId: string,
   played: Set<string>,
 ): Record<Suit, number> {
   const velocities: Record<Suit, number> = { S: 0, H: 0, D: 0, C: 0 };
@@ -276,7 +274,7 @@ function hardScore(
   playerId: string,
   card: Card,
   velocities: Record<Suit, number>,
-  played: Set<string>,
+  _played: Set<string>,
 ): number {
   let score = 0;
   const player = state.players.find(p => p.id === playerId)!;

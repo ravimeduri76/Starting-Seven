@@ -9,7 +9,7 @@ interface MatchResultsProps {
   onBackToLobby: () => void;
 }
 
-export function MatchResults({ standings, roundResults, matchConfig, onRematch, onBackToLobby }: MatchResultsProps) {
+export function MatchResults({ standings, roundResults, onRematch, onBackToLobby }: MatchResultsProps) {
   const winner = standings[0];
 
   return (

@@ -1,6 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { createGame, legalActions, applyAction, isRoundOver, score } from '../engine';
-import { DEFAULT_SETTINGS, GameState, PlayerSetup } from '../types';
+import type { GameState, PlayerSetup } from '../types';
+import { DEFAULT_SETTINGS } from '../types';
 import { chooseAction } from '../../bots/bot';
 
 function botSetups(n: number): PlayerSetup[] {

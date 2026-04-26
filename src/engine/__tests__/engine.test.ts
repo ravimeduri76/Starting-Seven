@@ -1,12 +1,10 @@
 import { describe, it, expect } from 'vitest';
 import {
   createGame, legalActions, applyAction, isRoundOver, score,
-  getPlayableCards, hasExpiredSeven, buildDeck,
+  getPlayableCards,
 } from '../engine';
-import {
-  Card, Suit, GameState, GameSettings, DEFAULT_SETTINGS,
-  Action, PlayerSetup, cardValue, cardsEqual, SEVEN,
-} from '../types';
+import type { Card, Suit, GameState, GameSettings, PlayerSetup } from '../types';
+import { DEFAULT_SETTINGS, SEVEN } from '../types';
 
 // ── Helpers ─────────────────────────────────────────────────
 

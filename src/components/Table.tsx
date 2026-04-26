@@ -1,5 +1,4 @@
 import type { GameState, Action, Card, MatchStandings, MatchConfig, Suit } from '../engine/types';
-import { SUITS } from '../engine/types';
 import { legalActions } from '../engine/engine';
 import { EdCard } from './cards/EdCard';
 import { EdChainStrip, ChainRankHeader } from './table/EdChainStrip';

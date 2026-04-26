@@ -1,10 +1,10 @@
 import { useState, useCallback, useRef } from 'react';
 import type {
-  GameState, GameSettings, PlayerSetup, Action, GameEvent,
-  ScoreEntry, MatchConfig, RoundResult, MatchStandings, Card,
+  GameState, GameSettings, PlayerSetup, Action,
+  MatchConfig, RoundResult, MatchStandings, Card,
 } from '../engine/types';
 import { DEFAULT_SETTINGS } from '../engine/types';
-import { createGame, legalActions, applyAction, isRoundOver, score } from '../engine/engine';
+import { createGame, applyAction, isRoundOver, score } from '../engine/engine';
 import { chooseAction } from '../bots/bot';
 
 // ── Screen types ────────────────────────────────────────────
@@ -157,51 +157,6 @@ export function useMatch(): MatchController {
       botTimeoutRef.current = null;
     }
   }, []);
-
-  // ── Bot turn processing ─────────────────────────────────
-
-  const processBotTurns = useCallback((currentState: GameState, config: MatchConfig) => {
-    let s = currentState;
-
-    const processNext = () => {
-      if (isRoundOver(s)) {
-        const rn = roundResults.length + 1; // will be set by caller
-        const rr = captureRoundResult(s, rn);
-        setCurrentRoundResult(rr);
-        setState(s);
-        setScreen('round-over');
-        return;
-      }
-
-      const currentPlayer = s.players[s.currentSeat];
-      if (!currentPlayer.isBot) {
-        // Human's turn
-        if (config.mode === 'local') {
-          const humanCount = s.players.filter(p => !p.isBot).length;
-          if (humanCount > 1) {
-            setState(s);
-            setScreen('pass-device');
-            return;
-          }
-        }
-        setState(s);
-        setScreen('table');
-        return;
-      }
-
-      // Bot turn
-      const action = chooseAction(
-        s, currentPlayer.id, currentPlayer.botDifficulty || 'easy',
-      );
-      const result = applyAction(s, action);
-      s = result.state;
-      setState(s);
-
-      botTimeoutRef.current = window.setTimeout(processNext, 600);
-    };
-
-    botTimeoutRef.current = window.setTimeout(processNext, 400);
-  }, [roundResults.length]);
 
   // ── Start a new round ───────────────────────────────────
 
