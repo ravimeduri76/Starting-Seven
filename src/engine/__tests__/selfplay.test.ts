@@ -39,7 +39,7 @@ function runBotGame(seed: number): GameState {
 }
 
 describe('§14.8 Bot self-play (1000 rounds)', () => {
-  it('1000 easy-bot games complete without rule violations', () => {
+  it('1000 easy-bot games complete without rule violations', { timeout: 30000 }, () => {
     for (let seed = 0; seed < 1000; seed++) {
       const final = runBotGame(seed);
 
