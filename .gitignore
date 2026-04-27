@@ -30,3 +30,11 @@ experiments/llm-results-*.md
 # Design source files (not for repo)
 NewDesign/
 *.zip
+
+# Claude Code local settings
+.claude/
+
+# Firebase (if attempted)
+.firebase/
+firebase-debug.log
+.firebaserc
